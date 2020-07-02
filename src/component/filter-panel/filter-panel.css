@@ -1,0 +1,26 @@
+.todo__filter-btn{
+    margin-left: 5px;
+
+    width: 40px;
+    height: 100%;
+
+    background: none;
+    border: 1px solid #cdcdcd;
+    border-radius: 3px;
+}
+
+.todo__filter-btn:focus,
+.todo__filter-btn:active{
+    background: none;
+    border: 2px solid darkblue;
+    outline: none;
+    border-radius: 3px;
+}
+
+.todo__filter-btn--active{
+    border-color: darkred;
+}
+
+.revers{
+    transform: rotate(180deg);
+}

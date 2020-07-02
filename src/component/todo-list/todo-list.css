@@ -1,0 +1,25 @@
+.todo__list{
+    margin: 0;
+    padding: 10px 0;
+
+    list-style: none;
+}
+
+.todo__item{
+    display: flex;
+    justify-content: space-between;
+
+    padding-left: 15px;
+    margin-bottom: 5px;
+
+    min-width: 350px;
+    max-width: 500px;
+    height: 40px;
+
+    border: 1px solid #cdcdcd;
+    border-radius: 5px;
+}
+
+.todo__item span{
+    margin-top: 10px;
+}

@@ -1,10 +1,12 @@
 import React from 'react';
 
+import "./search-panel.css";
+
 const SearchPanel = () => {
 
     const searchText = 'Type here to search';
 
-    return <input placeholder={searchText} />;
+    return <input className="todo__search" placeholder={searchText} />;
 };
 
 export default SearchPanel;
