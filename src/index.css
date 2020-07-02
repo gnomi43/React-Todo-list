@@ -1,0 +1,13 @@
+*{
+    box-sizing: border-box;
+}
+
+.todo__wrapper{
+    margin: 0 auto;
+
+    width: max-content;
+}
+
+.todo__control{
+    display: flex;
+}

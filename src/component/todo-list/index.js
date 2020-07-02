@@ -1,6 +1,8 @@
 import React from 'react';
 
-import TodoListItem from './todo-list-item';
+import TodoListItem from '../todo-list-item';
+import ElementEdit from '../element-edit';
+import "./todo-list.css";
 
 const TodoList = ({ todos }) => {
 
@@ -9,14 +11,15 @@ const TodoList = ({ todos }) => {
         const { id, ...itemProps } = item;
 
             return( 
-                <li key={item.id}>
+                <li className="todo__item" key={item.id}>
                     <TodoListItem { ...itemProps }/>
+                    <ElementEdit />
                 </li>
                 );
         });
 
     return (
-        <ul>
+        <ul className="todo__list">
             { elements }
         </ul>
     );
