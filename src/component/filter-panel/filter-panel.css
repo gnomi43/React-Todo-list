@@ -1,26 +1,33 @@
-.todo__filter-btn{
-    margin-left: 5px;
+.todo__filter{
+    display: flex;
+    justify-content: space-between;
 
-    width: 40px;
+    margin-left: 10px;
+
+    width: 100%;
+}
+
+.todo__filter-btn{
+    padding: 0 10px;
+
+    width: auto;
     height: 100%;
 
     background: none;
     border: 1px solid #cdcdcd;
     border-radius: 3px;
+
+    font-size: 14px;
 }
 
 .todo__filter-btn:focus,
-.todo__filter-btn:active{
-    background: none;
-    border: 2px solid darkblue;
+.todo__filter-btn:active,
+.todo__filter-btn:hover{
+    color: #ffffff;
+
     outline: none;
+    border: none;
     border-radius: 3px;
-}
 
-.todo__filter-btn--active{
-    border-color: darkred;
-}
-
-.revers{
-    transform: rotate(180deg);
+    background: green;
 }
