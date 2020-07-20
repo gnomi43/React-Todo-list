@@ -20,3 +20,9 @@
     box-shadow: none;
     outline: none;
 }
+
+.form-control{
+    box-sizing: border-box;
+    padding: 8px 15px;
+    width: 60%;
+}
