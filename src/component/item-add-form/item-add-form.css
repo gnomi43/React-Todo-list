@@ -1,0 +1,22 @@
+.item-add-form{
+    text-align: center;
+}
+
+.item-add-form__btn{
+    padding: 10px;
+    width: 40%;
+
+    color: #ffffff;
+
+    box-shadow: 0 1px 3px 0 green;
+
+    background: green;
+    border: none;
+    border-radius: 2px;
+}
+
+.item-add-form__btn:active,
+.item-add-form__btn:focus{
+    box-shadow: none;
+    outline: none;
+}
