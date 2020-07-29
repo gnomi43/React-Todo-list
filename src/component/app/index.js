@@ -16,6 +16,8 @@ export default class App extends React.Component {
         this.maxId = 100;
 
 
+
+
         this.createTodoItem = ( label ) => {
             return{
                 label,
@@ -30,11 +32,13 @@ export default class App extends React.Component {
                 this.createTodoItem("Drink Cofee"),
                 this.createTodoItem("Make Awesome App"),
                 this.createTodoItem("Have a lanche")
-            ]
+            ],
+            term: "",
+            filter: "all"
         };
 
 
-        this.deleteItem = (id) =>{
+        this.deleteItem = (id) => {
             
             this.setState( ({ todoData }) => {
 
@@ -72,7 +76,7 @@ export default class App extends React.Component {
             return [...arr.slice(0, idx), newItem, ...arr.slice(idx + 1)];
         };
 
-        this.onToggleDone = (id) =>{
+        this.onToggleDone = (id) => {
             this.setState(( { todoData } ) => {
                 
                 return {
@@ -81,13 +85,44 @@ export default class App extends React.Component {
             });
         };
 
-        this.onToggleImportant = (id) =>{
+        this.onToggleImportant = (id) => {
             this.setState(( { todoData } ) => {
                 return {
                     todoData: this.togglePropery(todoData, id, "important")
                 }
             });
         };
+
+        this.search = (items, term) => {
+            if(term.length === 0){
+                return items;
+            }
+
+            return items.filter((item)=>{
+                return item.label.toLowerCase().indexOf(term.toLowerCase()) > -1
+            });
+        };
+
+        this.onSearchChange = (term) => {
+            this.setState({ term });
+        };
+
+        this.filterPanel = (items, filter) => {
+            switch(filter) {
+                case "all": 
+                    return items;
+                case "active":
+                    return items.filter((item) => !item.done);
+                case "done":
+                    return items.filter((item) => item.done);
+                default: 
+                    return items;
+            }
+        }
+
+        this.onFilterChange = (filter) =>{
+            this.setState({ filter });
+        }
 
     };
 
@@ -96,18 +131,24 @@ export default class App extends React.Component {
             const doneCount = this.state.todoData.filter( el => el.done ).length;
             const todoCount = this.state.todoData.length - doneCount;
 
-            const { todoData } = this.state;
+            const { todoData, term, filter } = this.state;
+
+            const visibleItems = this.filterPanel(
+                this.search(todoData, term), filter);
 
 
             return(
                 <div className="todo__wrapper">
                     <AppHeader todoList = {todoCount} todoDone = {doneCount} />
                     <div className="todo__control">
-                        <SearchPanel />
-                        <FilterPanel />
+                        <SearchPanel 
+                        onSearchChangeApp={this.onSearchChange}/>
+                        <FilterPanel    filter={filter}
+                                        onFilterChange = {this.onFilterChange}
+                        />
                     </div>
                     <TodoList 
-                        todos = { todoData }
+                        todos = { visibleItems }
                         onDeleted={ this.deleteItem }
                         onToggleImportant={ this.onToggleImportant }
                         onToggleDone={ this.onToggleDone }/>

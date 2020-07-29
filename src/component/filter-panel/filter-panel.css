@@ -20,6 +20,7 @@
     font-size: 14px;
 }
 
+.todo__filter-btn.todo__filter-btn--active,
 .todo__filter-btn:focus,
 .todo__filter-btn:active,
 .todo__filter-btn:hover{
