@@ -55,11 +55,6 @@ export default class TodoListItem extends React.Component {
 
                     <button 
                         type="button"
-                        className="item-edit__btn item-edit__btn-delete">                            
-                        </button>
-
-                    <button 
-                        type="button"
                         className="item-edit__btn item-edit__btn-important"
                         onClick={ onToggleImportant }>
                         </button>
