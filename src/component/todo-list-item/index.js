@@ -1,54 +1,71 @@
-import React from 'react';
+import React from "react";
 
 import "./todo-list-item.css";
 
 
 export default class TodoListItem extends React.Component {
 
-
-
     constructor(){
         super();
 
         this.onLabelCkick = () => {
-            if(this.state.done){
-                this.setState({
-                    done: false
-                });
-            } else{
-                this.setState({
-                    done: true
-                });
-            }
+            this.setState((state) => {
+                return {
+                    done: !state.done
+                };
+            });
         };
 
-        this.state = {
-            done: false
+        this.onMarkImportant = () =>{
+            this.setState((state) => {
+                return {
+                    important: !state.important
+                };
+            });
         };
+
     }
 
     render(){
-        const {label, important = false} = this.props;
-        const { done } = this.state;
+        const { label, onDeleted, onToggleImportant, onToggleDone, important, done} = this.props;
 
-        let classNames ="";
-
+        let classNames ="todo-list-item";
         if (done){
-            classNames = "done";
+            classNames += " done";
         }
         
+        if (important) {
+            classNames += " important"
+        }
 
-        const style = {
-            color: important ? "blue" : "black",
-            fontWeight: important ? "700" : "400"
-        };
+       return (
+            <div className="todo__item-wrapper">
+                <span
+                    className = { classNames }
+                    onClick={ onToggleDone }>
+                    { label }
+                </span>
 
-       return <span
-                className = { classNames }
-                onClick={ this.onLabelCkick }
-                style = { style }>
-                { label }
-            </span>
+                <div className="todo__item-edit">
+                    <button
+                        type="button"
+                        className="item-edit__btn item-edit__btn-trash"
+                        onClick={ onDeleted }>
+                        </button>
+
+                    <button 
+                        type="button"
+                        className="item-edit__btn item-edit__btn-delete">                            
+                        </button>
+
+                    <button 
+                        type="button"
+                        className="item-edit__btn item-edit__btn-important"
+                        onClick={ onToggleImportant }>
+                        </button>
+                </div>
+            </div>
+            )
     }
 
 }
